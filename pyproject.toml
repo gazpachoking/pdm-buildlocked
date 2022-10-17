@@ -1,0 +1,29 @@
+[project]
+name = "pdm-buildlocked"
+version = "0.1.0"
+description = "Adds the ability to build the project using locked dependencies."
+authors = [
+    {name = "Chase Sterling", email = "chase.sterling@gmail.com"},
+]
+readme = "README.md"
+dependencies = [
+    "pdm>=2.1.5",
+]
+requires-python = ">=3.7"
+license = {text = "MIT"}
+
+[project.entry-points.pdm]
+build-locked = "build_locked:register"
+
+[project.optional-dependencies]
+
+[build-system]
+requires = ["pdm-pep517>=1.0.0"]
+build-backend = "pdm.pep517.api"
+
+[tool]
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+dev = [
+    "black>=22.10.0",
+]
