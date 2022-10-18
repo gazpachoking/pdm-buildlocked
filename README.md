@@ -8,6 +8,11 @@ conflicts when installed alongside other packages. It should be clearly document
 projects built in this way should be installed with `pipx`, or in their own isolated
 virtual environment.
 
+## Installation
+This pdm plugin can be installed with the command:
+
+`pdm plugin add pdm-buildlocked`
+
 ## Usage
 This plugin modifies the built in `pdm build` command to include the `--locked` argument. 
 When specified the resulting artifacts will have all their dependencies (including 
