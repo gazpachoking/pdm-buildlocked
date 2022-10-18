@@ -7,13 +7,26 @@ from pdm.cli.commands.build import Command as BaseBuildCommand
 
 
 class BuildLockedCommand(BaseBuildCommand):
-    """Build the project with all dependencies pinned to versions in the lock file"""
+    """Build artifacts for distribution"""
+
+    def add_arguments(self, parser: argparse.ArgumentParser) -> None:
+        super().add_arguments(parser)
+        parser.add_argument(
+            "--locked",
+            dest="locked",
+            default=False,
+            action="store_true",
+            help="Build with all dependencies (including transitive) locked "
+                 "to their versions from the lock file",
+        )
 
     def handle(self, project: Project, options: argparse.Namespace) -> None:
         """The command handler function.
         :param project: the pdm project instance
         :param options: the parsed Namespace object
         """
+        if not options.locked:
+            return super().handle(project, options)
         orig_pyproject = deepcopy(project.pyproject)
         try:
             requirements = project.get_dependencies("default")
@@ -40,4 +53,4 @@ class BuildLockedCommand(BaseBuildCommand):
 
 
 def register(core):
-    core.register_command(BuildLockedCommand, "build-locked")
+    core.register_command(BuildLockedCommand, "build")

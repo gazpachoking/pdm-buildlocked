@@ -5,6 +5,9 @@ description = "Adds the ability to build the project using locked dependencies."
 authors = [
     {name = "Chase Sterling", email = "chase.sterling@gmail.com"},
 ]
+dependencies = [
+    "pdm>=2.00",
+]
 readme = "README.md"
 requires-python = ">=3.7"
 license = {text = "MIT"}
