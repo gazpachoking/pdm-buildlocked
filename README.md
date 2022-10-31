@@ -14,8 +14,12 @@ This pdm plugin can be installed with the command:
 `pdm plugin add pdm-buildlocked`
 
 ## Usage
-This plugin modifies the built in `pdm build` command to include the `--locked` argument. 
-When specified the resulting artifacts will have all their dependencies (including 
-transitive ones) pinned to the versions specified in the lock file.
+Locked build mode can be enabled by including the following in your `pyproject.toml`
+file. When enabled, running `pdm build` or `pdm publish` will cause the resulting 
+distribution will have all dependencies (including transitive ones) pinned to the 
+versions specified in the lock file.
 
-`pdm build --locked`
+```toml
+[tool.pdm.build]
+buildlocked = true
+```

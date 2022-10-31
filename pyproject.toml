@@ -1,6 +1,6 @@
 [project]
 name = "pdm-buildlocked"
-version = "0.1.0a1"
+version = "0.2.0a1"
 description = "Adds the ability to build the project using locked dependencies."
 authors = [
     {name = "Chase Sterling", email = "chase.sterling@gmail.com"},
