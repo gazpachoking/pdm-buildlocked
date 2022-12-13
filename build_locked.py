@@ -35,13 +35,13 @@ class BuildLocker:
             project.meta.setdefault("optional-dependencies", {})[group] = [
                 str(c.req.as_pinned_version(c.version)) for c in candidates
             ]
-        project.write_pyproject()
+        project.pyproject.write()
 
     def unlock(self, *args, **kwargs):
         if self.project and self.orig_pyproject:
             self.project.core.ui.echo("Restoring dependencies after build...")
             self.project.pyproject = self.orig_pyproject
-            self.project.write_pyproject()
+            self.project.pyproject.write()
             self.project = None
             self.orig_pyproject = None
 
